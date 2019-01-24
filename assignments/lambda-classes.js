@@ -1,5 +1,6 @@
 // CODE here for your Lambda Classes
 
+// Base Class/Constructor
 class Person {
   constructor(attributes) {
 		this.name = attributes.name;
@@ -13,6 +14,7 @@ class Person {
 	}
 }
 
+// Class for Instructor objects
 class Instructor extends Person {
 	constructor(instAttributes) {
 		super(instAttributes);
@@ -34,6 +36,7 @@ class Instructor extends Person {
 	}
 }
 
+// Class for Student objects
 class Student extends Instructor {
 	constructor(studAttributes) {
 		super(studAttributes);
@@ -66,6 +69,7 @@ class Student extends Instructor {
 	}
 }
 
+// Class for Project Manager objects
 class ProjectManagers extends Instructor {
 	constructor(projAttributes) {
 		super(projAttributes);
@@ -134,6 +138,8 @@ const melinda = new ProjectManagers({
 	gradClassName: 'CS14',
 	favInstructor: 'Josh',
 })
+
+// Running tests to check for errors
 
 // console.log(josh.catchPhrase);
 // console.log(josh.demo('Java'));
