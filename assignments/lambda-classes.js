@@ -28,6 +28,10 @@ class Instructor extends Person {
 	grade(student, subject) {
 		console.log(`${student.name} receives a perfect score on ${subject}`);
 	}
+
+	randomPoint(student) {
+		return `${this.name} has altered ${student.name}'s grade. ${student.name}'s grade is now ${Math.round((student.grade += ((Math.random() * 10) + (Math.random() * -10))))}`;
+	}
 }
 
 class Student extends Instructor {
@@ -36,10 +40,13 @@ class Student extends Instructor {
 		this.previousBackground = studAttributes.previousBackground;
 		this.className = studAttributes.className;
 		this.favSubjects = studAttributes.favSubjects;
+		this.grade = studAttributes.grade;
 	}
 
 	listsSubjects() {
-		console.log(this.favSubjects);
+		for(let i = 0; i < this.favSubjects.length; i++) {
+			console.log(this.favSubjects[i]);
+		}
 	}
 
 	PRAssignment(subject) {
@@ -48,6 +55,14 @@ class Student extends Instructor {
 
 	sprintChallenge(subject) {
 		console.log(`${this.name} has begun sprint challenge on ${subject}`);
+	}
+
+	graduate() {
+		if (this.grade > 70) {
+			return `${this.name} has graduated from Lambda School!!!`
+		} else {
+			return `${this.name} has to grind it out some more.`
+		}
 	}
 }
 
@@ -78,7 +93,7 @@ const josh = new Instructor({
 	catchPhrase: "Isnt this really cool? I think it's super cool.",
 })
 
-// Example of an object built off of the Student class
+// Examples of an object built off of the Student class
 
 const billy = new Student({
 	name: 'Billy',
@@ -89,7 +104,8 @@ const billy = new Student({
 	favLanguage: 'JavaScript',
 	previousBackground: 'Collecting acorns for the local squirells',
 	className: 'WEB17',
-	favSubjects: ['React', 'HTML', 'CSS', 'JavaScript']
+	favSubjects: ['React', 'HTML', 'CSS', 'JavaScript'],
+	grade: 75
 })
 
 const jilly = new Student({
@@ -101,7 +117,8 @@ const jilly = new Student({
 	favLanguage: 'Python',
 	previousBackground: 'Worked at the Girl Scouts',
 	className: 'WEB17',
-	favSubjects: ['HTML', 'CSS', 'Redux', 'Python']
+	favSubjects: ['HTML', 'CSS', 'Redux', 'Python'],
+	grade: 92
 })
 
 // Example of an object built off of the ProjectManagers class
@@ -129,3 +146,5 @@ const melinda = new ProjectManagers({
 // console.log(melinda.gradClassName);
 // console.log(melinda.standUp('WEB17'));
 // console.log(melinda.debugsCode(billy, 'JavaScript IV'));
+// console.log(melinda.randomPoint(billy));
+// console.log(billy.graduate());
